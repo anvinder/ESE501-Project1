@@ -12,6 +12,8 @@ SC_MODULE(mobile_processor)
 	sc_out < sc_bigint <8> > endtime;
 	sc_out < sc_bigint <1> > waittime;
 	sc_out <sc_bigint<49> > physical_packet_out;
+	sc_in  <sc_bigint<1> > copy_new_image_flag;
+
 
 	sc_bigint<49>temp_physical_packet_out;
 	sc_bigint<8>  temp_x_1;//18
@@ -21,6 +23,8 @@ SC_MODULE(mobile_processor)
 	sc_bigint<8>  temp_starttime;//56
 	sc_bigint<8>  temp_endtime;//64
 	sc_bigint<1>  temp_waittime;//65
+	sc_bigint<1>  temp_copy_new_image_flag;
+
 
 	void image_info();
 	SC_CTOR(mobile_processor)
