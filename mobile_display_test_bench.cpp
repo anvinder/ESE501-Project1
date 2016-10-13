@@ -6,6 +6,7 @@ int sc_main(int argc, char* argv[]) {
 	sc_signal < sc_bigint <8> > starttime, endtime;
 	sc_signal < sc_bigint <1> > waittime;
 	sc_signal < sc_bigint<49> > physical_packet_out;
+	sc_signal <sc_bigint<1> > copy_new_image_flag;
 	//sc_clock clock("clock", 10, SC_NS, .5);				
 	//int i;
 
@@ -19,6 +20,7 @@ int sc_main(int argc, char* argv[]) {
 	m1.endtime(endtime);
 	m1.waittime(waittime);
 	m1.physical_packet_out(physical_packet_out);
+	m1.copy_new_image_flag(copy_new_image_flag);
 
 	//open vcd file
 	sc_trace_file *file;
@@ -33,8 +35,10 @@ int sc_main(int argc, char* argv[]) {
 	sc_trace(file, endtime, "endtime");
 	sc_trace(file, waittime, "waittime");
 	sc_trace(file, physical_packet_out, "physical_packet_out");
+	sc_trace (file, copy_new_image_flag, "copy_new_image_flag");
 
 
+copy_new_image_flag =1;
 for (int i = 0; i<=80; i++)
 {
     clk = 0; 
@@ -43,11 +47,6 @@ for (int i = 0; i<=80; i++)
     sc_start(1, SC_NS);
 };
 
-
-clk = 0; 
-    sc_start(10, SC_NS);
-    clk = 1; 
-    sc_start(10, SC_NS);
 
 sc_start(1, SC_NS);
 sc_close_vcd_trace_file(file);
