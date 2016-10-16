@@ -51,15 +51,16 @@ SC_MODULE(mobile_processor)
 	sc_bigint<8>  temp_starttime3;//56
 	sc_bigint<8>  temp_endtime3;//64
 	sc_bigint<1>  temp_waittime3;//65
+    sc_bigint<1>  temp_copy_new_image_flag;
 
-	sc_bigint<1>  temp_copy_new_image_flag;
-
+	
 	void data_file();
 	void image_info();
 	SC_CTOR(mobile_processor)
 	{
 		SC_METHOD(image_info)
-			sensitive << clk.pos();
-	}
-		
+			//dont_initialize();
+		//SC_THREAD(image_info)
+		sensitive << clk.pos();
+	}	
 };
