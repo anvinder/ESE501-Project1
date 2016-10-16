@@ -1,6 +1,29 @@
 #include "a.h"
+#include <iostream>
+#include <stdlib.h>
+#include <fstream>
+using namespace std;
 
 int sc_main(int argc, char* argv[]) {
+
+string line1, line2;
+
+ifstream test("session.txt");
+
+if (test.is_open() == false) {
+  cout <<"file is not open";
+	}
+
+while( getline(test, line1) ) {
+  cout <<"packet 1 is "<< line1<<endl;
+	}
+
+while( getline(test, line2) ) {
+   cout << " packet 2 is  " <<line2<<endl;
+	}
+
+
+
 	sc_signal < bool > clk;	
 	sc_signal < sc_bigint <8> > x_1, y_1, x_2, y_2;
 	sc_signal < sc_bigint <8> > x_12, y_12, x_22, y_22, x_13, y_13, x_23, y_23;
@@ -86,8 +109,31 @@ int sc_main(int argc, char* argv[]) {
 	sc_trace (file, copy_new_image_flag, "copy_new_image_flag");
 
 
+
+
 copy_new_image_flag =1;
-for (int i = 0; i<=80; i++)
+physical_packet_out = "1000000001001000100000010100001001010100010000011";
+for (int i = 0; i<=60; i++)
+{
+    clk = 0; 
+    sc_start(1, SC_NS);
+    clk = 1; 
+    sc_start(1, SC_NS);
+};
+
+//wait(49, SC_NS);
+physical_packet_out2 = "1000001010000001110010100101000110010101111010011";
+for (int i = 60; i<=120; i++)
+{
+    clk = 0; 
+    sc_start(1, SC_NS);
+    clk = 1; 
+    sc_start(1, SC_NS);
+};
+
+//wait(49, SC_NS);
+physical_packet_out3 = "1000101110001010101110010000000101010101000000111";
+for (int i =121; i<=180; i++)
 {
     clk = 0; 
     sc_start(1, SC_NS);
