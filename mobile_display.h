@@ -26,9 +26,9 @@ SC_MODULE(mobile_processor)
 	sc_out <sc_bigint<49> > physical_packet_out;
 	sc_out <sc_bigint<49> > physical_packet_out2;
 	sc_out <sc_bigint<49> > physical_packet_out3;
-	sc_in  <sc_bigint<1> > copy_new_image_flag;
-
-
+	sc_out <sc_bigint<1> > newObjectFlag, newImageFlag;
+	sc_out <sc_bigint<8> > ObjectId;
+	sc_out <sc_uint<2> >    count;
 
 	sc_bigint<49>temp_physical_packet_out;
 	sc_bigint<49>temp_physical_packet_out2;
@@ -51,9 +51,11 @@ SC_MODULE(mobile_processor)
 	sc_bigint<8>  temp_starttime3;//56
 	sc_bigint<8>  temp_endtime3;//64
 	sc_bigint<1>  temp_waittime3;//65
-    sc_bigint<1>  temp_copy_new_image_flag;
+    sc_bigint<1>  temp_newObjectFlag, temp_newImageFlag;
+	sc_uint<2>    temp_count;
+	sc_bigint<8>    temp_ObjectId;
 
-	
+
 	void data_file();
 	void image_info();
 	SC_CTOR(mobile_processor)
