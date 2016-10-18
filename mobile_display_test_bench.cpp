@@ -35,7 +35,9 @@ while( getline(test, line2) ) {
 	sc_signal < sc_bigint<49> > physical_packet_out;
 	sc_signal < sc_bigint<49> > physical_packet_out2;
 	sc_signal < sc_bigint<49> > physical_packet_out3;
-	sc_signal <sc_bigint<1> > copy_new_image_flag;
+	sc_signal <sc_bigint<1> > newObjectFlag, newImageFlag;
+	sc_signal  <sc_bigint<8> > ObjectId;
+	sc_signal  <sc_uint<2> > count;
 	//sc_clock clock("clock", 80, SC_NS, 1);				
 	//int i;
 
@@ -70,8 +72,10 @@ while( getline(test, line2) ) {
 	m1.physical_packet_out(physical_packet_out);
 	m1.physical_packet_out2(physical_packet_out2);
 	m1.physical_packet_out3(physical_packet_out3);
-	m1.copy_new_image_flag(copy_new_image_flag);
-
+	m1.newObjectFlag(newObjectFlag);
+	m1.newImageFlag(newImageFlag);
+	m1.ObjectId(ObjectId);
+	m1.count(count);
 	//open vcd file
 	sc_trace_file *file;
 	file = sc_create_vcd_trace_file("mobile_processor");
@@ -106,12 +110,14 @@ while( getline(test, line2) ) {
 	sc_trace(file, physical_packet_out, "physical_packet_out");
 	sc_trace(file, physical_packet_out2, "physical_packet_out2");
 	sc_trace(file, physical_packet_out3, "physical_packet_out3");
-	sc_trace (file, copy_new_image_flag, "copy_new_image_flag");
+	sc_trace (file, newObjectFlag, "newObjectFlag");
+	sc_trace (file, newImageFlag, "newImageFlag");
+	sc_trace(file, ObjectId, "ObjectId");
+	sc_trace(file, count, "count");
 
 
-
-
-copy_new_image_flag =1;
+newObjectFlag =1;
+//ObjectId = " 00000100";
 physical_packet_out = "1000000001001000100000010100001001010100010000011";
 for (int i = 0; i<=60; i++)
 {
