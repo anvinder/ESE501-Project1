@@ -3,9 +3,9 @@ int j;
 
 void mobile_processor::image_info()
 {
-			temp_copy_new_image_flag = copy_new_image_flag;
+			temp_newObjectFlag = newObjectFlag;
 
-			if (temp_copy_new_image_flag==0)
+			if (temp_newObjectFlag==0)
 			{
 				
 			temp_x_1 = 0;
@@ -29,17 +29,17 @@ void mobile_processor::image_info()
 			temp_waittime = 0;
 			waittime= temp_waittime;
 
-			temp_copy_new_image_flag =1;
-			copy_new_image_flag== temp_copy_new_image_flag;
 			}
 			 
 			else 
-			{
-				for (j=0;j<=2;j++)
-				{
-					if (j==0)
 			{	
-			//physical_packet_out = "1000000001001000100000010100001001010100010000011";
+				for (temp_count=0;temp_count<=2;temp_count++)
+				{
+					
+					if (temp_count==0)
+						
+			{	
+				count = temp_count;
 			temp_physical_packet_out = physical_packet_out;
 
 			temp_x_1 = temp_physical_packet_out.range(7,0);
@@ -53,7 +53,11 @@ void mobile_processor::image_info()
 
 			temp_y_2 = temp_physical_packet_out.range(31,24);
 			y_2 = temp_y_2;
-	
+			
+			ObjectId="10101010";	
+			//ObjectId = temp_ObjectId;
+			
+
 			temp_starttime =    temp_physical_packet_out.range(39,32);
 			starttime = temp_starttime;
 
@@ -64,16 +68,14 @@ void mobile_processor::image_info()
 			//temp_waittime =     temp_physical_packet_out.range(48,48);
 			waittime= temp_waittime;
 
-			temp_copy_new_image_flag =1;
-			copy_new_image_flag== temp_copy_new_image_flag;
-				}
+			
+				} 
+					//ObjectId="10101010 ";
 			// wait for the second packet, the previous object needs to be deleted also.
-				if (j==1)
+				if (temp_count==1)
 				
 				{
-			 //wait (49, SC_NS);
-			 
-			//physical_packet_out2 = "1000001010000001110010100101000110010101111010011";
+					count = temp_count;
 			temp_physical_packet_out2 = physical_packet_out2;
 
 			temp_x_12 = temp_physical_packet_out2.range(7,0);
@@ -88,6 +90,10 @@ void mobile_processor::image_info()
 			temp_y_22 = temp_physical_packet_out2.range(31,24);
 			y_22 = temp_y_22;
 	
+			ObjectId="10101110";	
+			//ObjectId = temp_ObjectId;
+			
+
 			temp_starttime2 =    temp_physical_packet_out2.range(39,32);
 			starttime2 = temp_starttime2;
 
@@ -99,12 +105,11 @@ void mobile_processor::image_info()
 			waittime2= temp_waittime2;
 				}
 			
-				if (j==2)
+				if (temp_count==2)
 				{
+					count = temp_count;
 			// wait for the second packet, the previous object needs to be deleted also.
-			//wait (49, SC_NS);
-			
-			//physical_packet_out3 = "1000101110001010101110010000000101010101000000111";
+
 			temp_physical_packet_out3 = physical_packet_out3;
 
 			temp_x_13 = temp_physical_packet_out3.range(7,0);
@@ -119,6 +124,10 @@ void mobile_processor::image_info()
 			temp_y_23 = temp_physical_packet_out3.range(31,24);
 			y_23 = temp_y_23;
 	
+			ObjectId="10111110";	
+			//ObjectId = temp_ObjectId;
+			
+
 			temp_starttime3 =    temp_physical_packet_out3.range(39,32);
 			starttime3 = temp_starttime3;
 
